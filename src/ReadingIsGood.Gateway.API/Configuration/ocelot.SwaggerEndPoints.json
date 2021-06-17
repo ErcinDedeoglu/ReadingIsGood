@@ -1,0 +1,46 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "customers",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "Customers API",
+          "Version": "v1",
+          "Service": {
+            "Name": "customers",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "orders",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "Orders API",
+          "Version": "v1",
+          "Service": {
+            "Name": "orders",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "authorization",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "Authorization API",
+          "Version": "v1",
+          "Service": {
+            "Name": "authorization",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    }
+  ]
+}
