@@ -2,7 +2,6 @@
   "SwaggerEndPoints": [
     {
       "Key": "customers",
-      "TransformByOcelotConfig": false,
       "Config": [
         {
           "Name": "Customers API",
@@ -16,7 +15,6 @@
     },
     {
       "Key": "orders",
-      "TransformByOcelotConfig": false,
       "Config": [
         {
           "Name": "Orders API",
@@ -30,7 +28,6 @@
     },
     {
       "Key": "authorization",
-      "TransformByOcelotConfig": false,
       "Config": [
         {
           "Name": "Authorization API",
