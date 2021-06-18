@@ -1,15 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ReadingIsGood.Data.Entity
 {
-    public class User
+    public class User : Entity
     {
-        public int Id { get; set; }
+        [Required, MaxLength(256)]
         public string FirstName { get; set; }
+
+        [Required, MaxLength(256)]
         public string LastName { get; set; }
+
+        [Required, MaxLength(64)]
         public string Username { get; set; }
 
-        [JsonIgnore]
+        [Required, MaxLength(64)]
         public string Password { get; set; }
     }
 }
