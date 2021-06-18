@@ -9,7 +9,6 @@ namespace ReadingIsGood.Gateway.API
     {
         public static void Main(string[] args)
         {
-            
             CreateWebHostBuilder(args).Build().Run();
         }
 

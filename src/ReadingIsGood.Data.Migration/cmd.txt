@@ -1,0 +1,3 @@
+﻿add-migration Initial -Context "DataContext" -StartupProject "ReadingIsGood.Gateway.API" -Project "ReadingIsGood.Data.Migration"
+update-database -Context "DataContext" -StartupProject "ReadingIsGood.Gateway.API" -Project "ReadingIsGood.Data.Migration"
+remove-migration -Context "DataContext" -StartupProject "ReadingIsGood.Gateway.API" -Project "ReadingIsGood.Data.Migration"

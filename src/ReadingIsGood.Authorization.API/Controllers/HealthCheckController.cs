@@ -18,7 +18,7 @@ namespace ReadingIsGood.Authorization.API.Controllers
         [HttpGet("name")]
         public string Name()
         {
-            return Assembly.GetExecutingAssembly().GetName().Name; ;
+            return Assembly.GetExecutingAssembly().GetName().Name;
         }
     }
 }

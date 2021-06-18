@@ -27,6 +27,7 @@
     <ProjectReference Include="..\ReadingIsGood.Business.Middleware\ReadingIsGood.Business.Middleware.csproj" />
     <ProjectReference Include="..\ReadingIsGood.Data.Interface\ReadingIsGood.Data.Interface.csproj" />
     <ProjectReference Include="..\ReadingIsGood.Data.Service\ReadingIsGood.Data.Service.csproj" />
+    <ProjectReference Include="..\ReadingIsGood.Handler\ReadingIsGood.Handler.csproj" />
     <ProjectReference Include="..\ReadingIsGood.Helper\ReadingIsGood.Helper.csproj" />
   </ItemGroup>
 

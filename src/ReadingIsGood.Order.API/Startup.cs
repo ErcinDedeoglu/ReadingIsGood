@@ -7,6 +7,7 @@ using ReadingIsGood.Business.DTO.Internal;
 using ReadingIsGood.Business.Middleware;
 using ReadingIsGood.Data.Interface;
 using ReadingIsGood.Data.Service;
+using ReadingIsGood.Handler;
 using ReadingIsGood.Helper;
 
 namespace ReadingIsGood.Order.API
@@ -20,9 +21,10 @@ namespace ReadingIsGood.Order.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext(Configuration.GetConnectionString("DefaultConnection"), Configuration.GetValue<string>("MigrationName"));
+
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IJwtService, JwtService>();
@@ -30,25 +32,9 @@ namespace ReadingIsGood.Order.API
             SwaggerHelper.AddSwagger(services, "ReadingIsGood.Order.API", "v1");
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ReadingIsGood.Order.API v1"));
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-            app.UseMiddleware<JwtMiddleware>();
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.Configure(env.IsDevelopment());
         }
     }
 }

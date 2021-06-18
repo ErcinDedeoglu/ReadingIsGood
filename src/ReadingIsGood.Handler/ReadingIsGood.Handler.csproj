@@ -1,7 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReadingIsGood.Business.Middleware\ReadingIsGood.Business.Middleware.csproj" />
+    <ProjectReference Include="..\ReadingIsGood.Context\ReadingIsGood.Context.csproj" />
+    <ProjectReference Include="..\ReadingIsGood.Data.Migration\ReadingIsGood.Data.Migration.csproj" />
+    <ProjectReference Include="..\ReadingIsGood.Data.Service\ReadingIsGood.Data.Service.csproj" />
+    <ProjectReference Include="..\ReadingIsGood.Helper\ReadingIsGood.Helper.csproj" />
+  </ItemGroup>
 
 </Project>
