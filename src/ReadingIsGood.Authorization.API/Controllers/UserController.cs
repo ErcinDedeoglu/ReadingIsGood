@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ReadingIsGood.Business.Attribute;
 using ReadingIsGood.Business.DTO.Request;
 using ReadingIsGood.Data.Interface;
 
@@ -25,14 +24,6 @@ namespace ReadingIsGood.Authorization.API.Controllers
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             return Ok(response);
-        }
-
-        [Authorize]
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var users = _userService.GetAll();
-            return Ok(users);
         }
     }
 }
