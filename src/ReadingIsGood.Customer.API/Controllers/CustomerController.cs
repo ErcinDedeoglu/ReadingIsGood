@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using ReadingIsGood.Business.DTO.Common;
 using ReadingIsGood.Business.DTO.Request;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Interface.UOW;
 
 namespace ReadingIsGood.Customer.API.Controllers
 {
@@ -16,12 +17,12 @@ namespace ReadingIsGood.Customer.API.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ILogger<CustomerController> _logger;
-        private readonly ICustomerService _customerService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService)
+        public CustomerController(ILogger<CustomerController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
-            _customerService = customerService;
+            _unitOfWork = unitOfWork;
         }
         
         [HttpPost]
@@ -32,8 +33,8 @@ namespace ReadingIsGood.Customer.API.Controllers
                 FirstName = dto.FirstName,
                 LastName = dto.LastName
             };
-            await _customerService.InsertAsync(customer, cancellationToken);
-            await _customerService.CommitAsync(cancellationToken);
+            await _unitOfWork.CustomerService.InsertAsync(customer, cancellationToken);
+            await _unitOfWork.CommitAsync(cancellationToken);
 
             return Created(string.Empty, new HttpServiceResponse<Data.Entity.Customer> { Data = customer, HttpStatusCode = HttpStatusCode.Created });
         }
@@ -41,7 +42,7 @@ namespace ReadingIsGood.Customer.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var customers = _customerService.All();
+            var customers = _unitOfWork.CustomerService.All();
 
             if (customers == null) throw new ApiException("An error occurred while fetching customers.", HttpStatusCode.NotFound);
 
@@ -51,7 +52,7 @@ namespace ReadingIsGood.Customer.API.Controllers
         [HttpGet("{customerId:int}")]
         public async Task<IActionResult> Get(int customerId, CancellationToken cancellationToken)
         {
-            var customer = await _customerService.GetAsync(customerId, cancellationToken);
+            var customer = await _unitOfWork.CustomerService.GetAsync(customerId, cancellationToken);
 
             if (customer == null) throw new ApiException("Customer not found.", HttpStatusCode.NotFound);
 

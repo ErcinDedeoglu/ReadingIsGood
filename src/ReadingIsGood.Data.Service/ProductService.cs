@@ -1,22 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ReadingIsGood.Context;
 using ReadingIsGood.Data.Entity;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Service.UOW;
 
 namespace ReadingIsGood.Data.Service
 {
-    public class AuditLogService : IAuditLogService
+    public class ProductService : Repository<Product>, IProductService
     {
         private readonly DataContext _dataContext;
 
-        public AuditLogService(DataContext dataContext)
+        public ProductService(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
         }
 
-        public IEnumerable<AuditLog> All()
+        public IEnumerable<Product> ActiveRecords()
         {
-            return _dataContext.AuditLogs;
+            return _dataContext.Products.Where(a => !a.Deleted);
         }
     }
 }

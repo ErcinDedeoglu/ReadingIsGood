@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using ReadingIsGood.Context;
 using ReadingIsGood.Data.Entity;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Service.UOW;
 
 namespace ReadingIsGood.Data.Service
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : Repository<Customer>, ICustomerService
     {
         private readonly DataContext _dataContext;
 
-        public CustomerService(DataContext dataContext)
+        public CustomerService(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
         }
@@ -30,11 +31,6 @@ namespace ReadingIsGood.Data.Service
         public async Task InsertAsync(Customer customer, CancellationToken cancellationToken)
         {
             await _dataContext.Customers.AddAsync(customer, cancellationToken);
-        }
-
-        public async Task CommitAsync(CancellationToken cancellationToken)
-        {
-            await _dataContext.SaveChangesAsync(null, cancellationToken);
         }
     }
 }

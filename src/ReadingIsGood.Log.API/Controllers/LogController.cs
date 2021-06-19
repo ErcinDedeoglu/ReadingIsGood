@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using ReadingIsGood.Business.Attribute;
 using ReadingIsGood.Business.DTO.Common;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Interface.UOW;
 
 namespace ReadingIsGood.Log.API.Controllers
 {
@@ -13,19 +14,19 @@ namespace ReadingIsGood.Log.API.Controllers
     public class LogController : ControllerBase
     {
         private readonly ILogger<LogController> _logger;
-        private readonly IAuditLogService _auditLogService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public LogController(ILogger<LogController> logger, IAuditLogService auditLogService)
+        public LogController(ILogger<LogController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
-            _auditLogService = auditLogService;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         [Authorize]
         public IActionResult Get()
         {
-            var auditLogs = _auditLogService.All();
+            var auditLogs = _unitOfWork.AuditLogService.GetAll();
 
             if (auditLogs == null) throw new ApiException("An error occurred while fetching logs.", HttpStatusCode.NotFound);
 

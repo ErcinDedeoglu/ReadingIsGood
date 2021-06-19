@@ -5,7 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using ReadingIsGood.Business.DTO.Internal;
 using ReadingIsGood.Business.Middleware;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Interface.UOW;
 using ReadingIsGood.Data.Service;
+using ReadingIsGood.Data.Service.UOW;
 using ReadingIsGood.Helper;
 
 namespace ReadingIsGood.Handler
@@ -16,13 +18,11 @@ namespace ReadingIsGood.Handler
         {
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            if (isDevelopment)
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (isDevelopment) app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", Assembly.GetCallingAssembly().GetName().Name + " v1"));
+            app.UseSwaggerUI(c =>
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", Assembly.GetCallingAssembly().GetName().Name + " v1"));
 
             app.UseHttpsRedirection();
 
@@ -30,23 +30,18 @@ namespace ReadingIsGood.Handler
 
             app.UseAuthorization();
             app.UseMiddleware<JwtMiddleware>();
-            app.UseExceptionHandler(Business.Middleware.ExceptionMiddleware.Init);
+            app.UseExceptionHandler(ExceptionMiddleware.Init);
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             app.UpdateDatabase();
         }
 
         public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
-            services.AddDbContext(configuration.GetConnectionString("DefaultConnection"), configuration.GetValue<string>("MigrationName"));
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICustomerService, CustomerService>();
-            services.AddScoped<IJwtService, JwtService>();
-            services.AddScoped<IAuditLogService, AuditLogService>();
+            services.AddDbContext(configuration.GetConnectionString("DefaultConnection"),
+                configuration.GetValue<string>("MigrationName"));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllers();
 
             SwaggerHelper.AddSwagger(services, Assembly.GetCallingAssembly().GetName().Name, "v1");

@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using ReadingIsGood.Data.Entity;
+﻿using ReadingIsGood.Data.Interface.UOW;
 
 namespace ReadingIsGood.Data.Interface
 {
-    public interface IAuditLogService
+    public interface IAuditLogService : IRepository<Entity.AuditLog>
     {
-        IEnumerable<AuditLog> All();
     }
 }

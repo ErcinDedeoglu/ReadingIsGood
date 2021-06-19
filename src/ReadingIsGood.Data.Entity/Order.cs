@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ReadingIsGood.Data.Entity
 {
@@ -9,6 +10,6 @@ namespace ReadingIsGood.Data.Entity
 
         public Enum.OrderStatus OrderStatus { get; set; }
 
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }
