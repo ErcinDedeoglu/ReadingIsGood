@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ReadingIsGood.Context
 {
-    public class DataContext : DbContext
+    public class DataContext : AuditableDataContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -36,56 +36,56 @@ namespace ReadingIsGood.Context
             {
                 Id = 1,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Self-Help"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 2,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Biographies"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 3,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Business & Money"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 4,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Children's Books"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 5,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "History"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 6,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Health, Fitness & Dieting"
             });
             modelBuilder.Entity<Data.Entity.Category>().HasData(new Data.Entity.Category
             {
                 Id = 7,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Politics & Social Sciences"
             });
         }
@@ -97,8 +97,8 @@ namespace ReadingIsGood.Context
                 Id = 1,
                 CategoryId = 1,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Color Joy Coloring Book: Perfectly Portable Pages",
                 AmountOfStock = 13
             });
@@ -107,8 +107,8 @@ namespace ReadingIsGood.Context
                 Id = 2,
                 CategoryId = 1,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Four Agreements: A Practical Guide to Personal Freedom",
                 AmountOfStock = 3
             });
@@ -117,8 +117,8 @@ namespace ReadingIsGood.Context
                 Id = 3,
                 CategoryId = 1,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Greenlights",
                 AmountOfStock = 0
             });
@@ -128,8 +128,8 @@ namespace ReadingIsGood.Context
                 Id = 4,
                 CategoryId = 2,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Atatürk",
                 AmountOfStock = 1881
             });
@@ -139,8 +139,8 @@ namespace ReadingIsGood.Context
                 Id = 5,
                 CategoryId = 2,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "12 Years a Slave",
                 AmountOfStock = 55
             });
@@ -150,8 +150,8 @@ namespace ReadingIsGood.Context
                 Id = 6,
                 CategoryId = 2,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Running on Red Dog Road: And Other Perils of an Appalachian",
                 AmountOfStock = 233
             });
@@ -161,8 +161,8 @@ namespace ReadingIsGood.Context
                 Id = 7,
                 CategoryId = 3,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Book on Sales and Marketing: Expert Marketing for the People",
                 AmountOfStock = 233
             });
@@ -172,8 +172,8 @@ namespace ReadingIsGood.Context
                 Id = 8,
                 CategoryId = 3,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "HBR's 10 Must Reads on Sales",
                 AmountOfStock = 233
             });
@@ -183,8 +183,8 @@ namespace ReadingIsGood.Context
                 Id = 9,
                 CategoryId = 3,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Sales 101: From Finding Leads and Closing Techniques to Retaining Customers and Growing Your Business",
                 AmountOfStock = 233
             });
@@ -194,8 +194,8 @@ namespace ReadingIsGood.Context
                 Id = 10,
                 CategoryId = 4,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Lost on a Mountain in Maine",
                 AmountOfStock = 233
             });
@@ -205,8 +205,8 @@ namespace ReadingIsGood.Context
                 Id = 11,
                 CategoryId = 4,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Boy on the Wooden Box: How the Impossible Became Possible",
                 AmountOfStock = 233
             });
@@ -216,8 +216,8 @@ namespace ReadingIsGood.Context
                 Id = 12,
                 CategoryId = 4,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "A Long Walk to Water: Based on a True Story",
                 AmountOfStock = 233
             });
@@ -227,8 +227,8 @@ namespace ReadingIsGood.Context
                 Id = 13,
                 CategoryId = 5,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Turkish War of Independence: A Military History, 1919-1923",
                 AmountOfStock = 233
             });
@@ -238,8 +238,8 @@ namespace ReadingIsGood.Context
                 Id = 14,
                 CategoryId = 5,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Happiest Man on Earth",
                 AmountOfStock = 233
             });
@@ -249,8 +249,8 @@ namespace ReadingIsGood.Context
                 Id = 15,
                 CategoryId = 5,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Wild: From Lost to Found on the Pacific Crest Trail",
                 AmountOfStock = 233
             });
@@ -260,8 +260,8 @@ namespace ReadingIsGood.Context
                 Id = 16,
                 CategoryId = 6,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Good Carb Cookbook: Secrets of Eating Low on the Glycemic Index",
                 AmountOfStock = 233
             });
@@ -271,8 +271,8 @@ namespace ReadingIsGood.Context
                 Id = 17,
                 CategoryId = 6,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "The Four Agreements: A Practical Guide to Personal Freedom",
                 AmountOfStock = 233
             });
@@ -282,8 +282,8 @@ namespace ReadingIsGood.Context
                 Id = 18,
                 CategoryId = 6,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Quiet: The Power of Introverts in a World That Can't Stop Talking",
                 AmountOfStock = 233
             });
@@ -293,8 +293,8 @@ namespace ReadingIsGood.Context
                 Id = 19,
                 CategoryId = 7,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Spilled Milk: Based on a true story",
                 AmountOfStock = 233
             });
@@ -304,8 +304,8 @@ namespace ReadingIsGood.Context
                 Id = 20,
                 CategoryId = 7,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "Exposing U.S. Government Policies On Extraterrestrial Life: The Challenge Of Exopolitics",
                 AmountOfStock = 233
             });
@@ -315,8 +315,8 @@ namespace ReadingIsGood.Context
                 Id = 21,
                 CategoryId = 7,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 Name = "On Death And Dying",
                 AmountOfStock = 233
             });
@@ -328,8 +328,8 @@ namespace ReadingIsGood.Context
             {
                 Id = 1,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 FirstName = "Erçin",
                 LastName = "Dedeoğlu"
             });
@@ -338,8 +338,8 @@ namespace ReadingIsGood.Context
             {
                 Id = 2,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 FirstName = "Aylin",
                 LastName = "Dedeoğlu"
             });
@@ -348,8 +348,8 @@ namespace ReadingIsGood.Context
             {
                 Id = 3,
                 Deleted = false,
-                CreateDate = DateTime.UtcNow,
-                UpdateDate = DateTime.UtcNow,
+                CreateDate = new DateTime(2000, 01, 01),
+                UpdateDate = new DateTime(2000, 01, 01),
                 FirstName = "Ata",
                 LastName = "Dedeoğlu"
             });

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReadingIsGood.Context;
@@ -18,7 +19,14 @@ namespace ReadingIsGood.Handler
             {
                 using (var context = serviceScope.ServiceProvider.GetService<DataContext>())
                 {
-                    context.Database.Migrate();
+                    try
+                    {
+                        context.Database.Migrate();
+                    }
+                    catch
+                    {
+                        // ignored
+                    }
                 }
             }
         }

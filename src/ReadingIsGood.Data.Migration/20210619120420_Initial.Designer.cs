@@ -4,13 +4,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using ReadingIsGood.Context;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using ReadingIsGood.Context;
 
 namespace ReadingIsGood.Data.Migration
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210618123506_Initial")]
+    [Migration("20210619120420_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,42 @@ namespace ReadingIsGood.Data.Migration
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            modelBuilder.Entity("ReadingIsGood.Data.Entity.Audit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("AffectedColumns")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("NewValues")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OldValues")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PrimaryKey")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TableName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AuditLogs");
+                });
 
             modelBuilder.Entity("ReadingIsGood.Data.Entity.Category", b =>
                 {
@@ -50,58 +86,58 @@ namespace ReadingIsGood.Data.Migration
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 780, DateTimeKind.Utc).AddTicks(4928),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Self-Help",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 780, DateTimeKind.Utc).AddTicks(5161)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5370),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Biographies",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5375)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5446),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Business & Money",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5447)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5461),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Children's Books",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5462)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5475),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "History",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5476)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5495),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Health, Fitness & Dieting",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5496)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5508),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Politics & Social Sciences",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 781, DateTimeKind.Utc).AddTicks(5509)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -139,29 +175,29 @@ namespace ReadingIsGood.Data.Migration
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(2344),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             FirstName = "Erçin",
                             LastName = "Dedeoğlu",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(2347)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(3090),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             FirstName = "Aylin",
                             LastName = "Dedeoğlu",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(3092)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(3108),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             FirstName = "Ata",
                             LastName = "Dedeoğlu",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 783, DateTimeKind.Utc).AddTicks(3110)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -267,210 +303,210 @@ namespace ReadingIsGood.Data.Migration
                             Id = 1,
                             AmountOfStock = 13,
                             CategoryId = 1,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(8400),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Color Joy Coloring Book: Perfectly Portable Pages",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(8403)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             AmountOfStock = 3,
                             CategoryId = 1,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9008),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Four Agreements: A Practical Guide to Personal Freedom",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9010)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             AmountOfStock = 0,
                             CategoryId = 1,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9031),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Greenlights",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9032)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
                             AmountOfStock = 1881,
                             CategoryId = 2,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9047),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Atatürk",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9048)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
                             AmountOfStock = 55,
                             CategoryId = 2,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9063),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "12 Years a Slave",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9063)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
                             AmountOfStock = 233,
                             CategoryId = 2,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9081),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Running on Red Dog Road: And Other Perils of an Appalachian",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9082)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 7,
                             AmountOfStock = 233,
                             CategoryId = 3,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9145),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Book on Sales and Marketing: Expert Marketing for the People",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9146)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 8,
                             AmountOfStock = 233,
                             CategoryId = 3,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9161),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "HBR's 10 Must Reads on Sales",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9162)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 9,
                             AmountOfStock = 233,
                             CategoryId = 3,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9176),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Sales 101: From Finding Leads and Closing Techniques to Retaining Customers and Growing Your Business",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9177)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 10,
                             AmountOfStock = 233,
                             CategoryId = 4,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9192),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Lost on a Mountain in Maine",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9193)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 11,
                             AmountOfStock = 233,
                             CategoryId = 4,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9207),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Boy on the Wooden Box: How the Impossible Became Possible",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9208)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 12,
                             AmountOfStock = 233,
                             CategoryId = 4,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9221),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "A Long Walk to Water: Based on a True Story",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9222)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 13,
                             AmountOfStock = 233,
                             CategoryId = 5,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9236),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Turkish War of Independence: A Military History, 1919-1923",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9237)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 14,
                             AmountOfStock = 233,
                             CategoryId = 5,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9250),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Happiest Man on Earth",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9251)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 15,
                             AmountOfStock = 233,
                             CategoryId = 5,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9264),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Wild: From Lost to Found on the Pacific Crest Trail",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9265)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 16,
                             AmountOfStock = 233,
                             CategoryId = 6,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9278),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Good Carb Cookbook: Secrets of Eating Low on the Glycemic Index",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9279)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 17,
                             AmountOfStock = 233,
                             CategoryId = 6,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9292),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "The Four Agreements: A Practical Guide to Personal Freedom",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9293)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 18,
                             AmountOfStock = 233,
                             CategoryId = 6,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9307),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Quiet: The Power of Introverts in a World That Can't Stop Talking",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9309)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 19,
                             AmountOfStock = 233,
                             CategoryId = 7,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9321),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Spilled Milk: Based on a true story",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9322)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 20,
                             AmountOfStock = 233,
                             CategoryId = 7,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9335),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "Exposing U.S. Government Policies On Extraterrestrial Life: The Challenge Of Exopolitics",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9336)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 21,
                             AmountOfStock = 233,
                             CategoryId = 7,
-                            CreateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9349),
+                            CreateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Deleted = false,
                             Name = "On Death And Dying",
-                            UpdateDate = new DateTime(2021, 6, 18, 12, 35, 5, 782, DateTimeKind.Utc).AddTicks(9350)
+                            UpdateDate = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

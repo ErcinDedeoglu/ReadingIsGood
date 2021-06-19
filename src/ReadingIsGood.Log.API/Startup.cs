@@ -4,15 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReadingIsGood.Handler;
-using ReadingIsGood.Helper;
 
-namespace ReadingIsGood.Authorization.API
+namespace ReadingIsGood.Log.API
 {
     public class Startup
     {
         public Startup(IWebHostEnvironment webHostEnvironment)
         {
-            Configuration = ConfigurationHelper.Build(webHostEnvironment.EnvironmentName);
+            Configuration = Helper.ConfigurationHelper.Build(webHostEnvironment.EnvironmentName);
         }
 
         public IConfiguration Configuration { get; }

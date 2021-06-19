@@ -30,6 +30,7 @@ namespace ReadingIsGood.Handler
 
             app.UseAuthorization();
             app.UseMiddleware<JwtMiddleware>();
+            app.UseExceptionHandler(Business.Middleware.ExceptionMiddleware.Init);
 
             app.UseEndpoints(endpoints =>
             {
@@ -43,7 +44,9 @@ namespace ReadingIsGood.Handler
             services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
             services.AddDbContext(configuration.GetConnectionString("DefaultConnection"), configuration.GetValue<string>("MigrationName"));
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IAuditLogService, AuditLogService>();
             services.AddControllers();
 
             SwaggerHelper.AddSwagger(services, Assembly.GetCallingAssembly().GetName().Name, "v1");

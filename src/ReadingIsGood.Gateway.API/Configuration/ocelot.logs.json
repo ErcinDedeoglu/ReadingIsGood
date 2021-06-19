@@ -1,0 +1,12 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "logs",
+      "UpstreamPathTemplate": "/api/logs/{everything}",
+      "UpstreamHttpMethod": [],
+      "SwaggerKey": "logs"
+    }
+  ]
+}

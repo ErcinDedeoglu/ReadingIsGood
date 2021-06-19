@@ -10,9 +10,9 @@ namespace ReadingIsGood.Order.API.Controllers
     [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<OrderController> _logger;
 
-        public OrderController(ILogger<WeatherForecastController> logger)
+        public OrderController(ILogger<OrderController> logger)
         {
             _logger = logger;
         }

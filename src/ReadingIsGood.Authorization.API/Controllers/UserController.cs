@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using ReadingIsGood.Business.DTO.Common;
 using ReadingIsGood.Business.DTO.Request;
+using ReadingIsGood.Business.DTO.Response;
 using ReadingIsGood.Data.Interface;
 
 namespace ReadingIsGood.Authorization.API.Controllers
@@ -18,12 +21,11 @@ namespace ReadingIsGood.Authorization.API.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var response = _userService.Authenticate(model);
+            var authenticateResponse = _userService.Authenticate(model);
 
-            if (response == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+            if (authenticateResponse == null) throw new ApiException("Username or password is incorrect", HttpStatusCode.Unauthorized);
 
-            return Ok(response);
+            return Created(string.Empty, new HttpServiceResponse<AuthenticateResponse> { Data = authenticateResponse, HttpStatusCode = HttpStatusCode.Created });
         }
     }
 }

@@ -38,6 +38,19 @@
           }
         }
       ]
+    },
+    {
+      "Key": "logs",
+      "Config": [
+        {
+          "Name": "Log API",
+          "Version": "v1",
+          "Service": {
+            "Name": "logs",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
     }
   ]
 }

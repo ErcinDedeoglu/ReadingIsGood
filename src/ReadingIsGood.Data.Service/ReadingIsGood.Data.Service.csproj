@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReadingIsGood.Context\ReadingIsGood.Context.csproj" />
     <ProjectReference Include="..\ReadingIsGood.Data.Interface\ReadingIsGood.Data.Interface.csproj" />
   </ItemGroup>
 

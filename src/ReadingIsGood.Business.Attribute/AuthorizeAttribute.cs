@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using Microsoft.AspNetCore.Mvc.Filters;
+using ReadingIsGood.Business.DTO.Common;
 using ReadingIsGood.Data.Entity;
 
 namespace ReadingIsGood.Business.Attribute
@@ -11,12 +11,8 @@ namespace ReadingIsGood.Business.Attribute
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (User)context.HttpContext.Items["User"];
-            if (user == null)
-            {
-                // not logged in
-                context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-            }
+            var user = (User) context.HttpContext.Items["User"];
+            if (user == null) throw new ApiException("Token is not found. Try again with token.", HttpStatusCode.Unauthorized);
         }
     }
 }
