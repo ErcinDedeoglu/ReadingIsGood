@@ -25,9 +25,9 @@ namespace ReadingIsGood.Order.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NewOrderRequest dto, CancellationToken cancellationToken)
         {
-            var order = await _unitOfWork.OrderService.AddOrder(dto, cancellationToken);
+            var orderId = await _unitOfWork.OrderService.AddOrder(dto, cancellationToken);
 
-            return Created(string.Empty, new HttpServiceResponse<Data.Entity.Order> {Data = order, HttpStatusCode = HttpStatusCode.Created});
+            return Created(string.Empty, new HttpServiceResponse<int> {Data = orderId, HttpStatusCode = HttpStatusCode.Created});
         }
 
         [HttpPost("customer/{customerId:int}")]

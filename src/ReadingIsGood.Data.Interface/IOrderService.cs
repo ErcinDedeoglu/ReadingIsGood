@@ -11,7 +11,7 @@ namespace ReadingIsGood.Data.Interface
     {
         Task<CustomerOrdersResponse> CustomerOrders(int customerId, PagingRequest paging, CancellationToken cancellationToken);
 
-        Task<Order> AddOrder(NewOrderRequest newOrderRequest, CancellationToken cancellationToken);
+        Task<int> AddOrder(NewOrderRequest newOrderRequest, CancellationToken cancellationToken);
 
         Task<Order> Get(int orderId, CancellationToken cancellationToken);
     }

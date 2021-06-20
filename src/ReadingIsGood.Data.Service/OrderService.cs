@@ -34,19 +34,18 @@ namespace ReadingIsGood.Data.Service
                 .Where(a => a.CustomerId == customerId);
 
             var recordCount = await orders.CountAsync(cancellationToken: cancellationToken);
-
             return new CustomerOrdersResponse()
             {
                 Page = paging.Page,
                 PageCount = (int) Math.Ceiling(decimal.Divide(recordCount, paging.Quantity)),
                 RecordCount = recordCount,
-                Items = orders.Skip(paging.Skip).Take(paging.Quantity).ToListAsync(cancellationToken: cancellationToken),
+                Items = await orders.Skip(paging.Skip).Take(paging.Quantity).ToListAsync(cancellationToken: cancellationToken),
             };
         }
 
-        public async Task<Order> AddOrder(NewOrderRequest newOrderRequest, CancellationToken cancellationToken)
+        public async Task<int> AddOrder(NewOrderRequest newOrderRequest, CancellationToken cancellationToken)
         {
-            var customer = await _dataContext.Customers.FindAsync(newOrderRequest.CustomerId, cancellationToken);
+            var customer = await _dataContext.Customers.FindAsync(new object[] {newOrderRequest.CustomerId}, cancellationToken);
 
             if (customer == null) throw new ApiException("Customer is not exists.", HttpStatusCode.BadRequest);
             if (customer.Deleted) throw new ApiException("Customer is deleted.", HttpStatusCode.BadRequest);
@@ -60,7 +59,7 @@ namespace ReadingIsGood.Data.Service
                 Customer = customer,
                 OrderDetails = newOrderRequest.Products.Select(a =>
                 {
-                    var product = _dataContext.Products.FindAsync(a.ProductId, cancellationToken).Result;
+                    var product = _dataContext.Products.FindAsync(new object[] {a.ProductId}, cancellationToken).Result;
                     if (product == null) throw new ApiException("The product with id number " + a.ProductId + " is not exists.", HttpStatusCode.BadRequest);
 
                     product.AmountOfStock = -a.Amount; //TODO: Check
@@ -78,7 +77,7 @@ namespace ReadingIsGood.Data.Service
             await _dataContext.Orders.AddAsync(order, cancellationToken);
             await _dataContext.SaveChangesAsync(null, cancellationToken);
 
-            return order;
+            return order.Id;
         }
 
 

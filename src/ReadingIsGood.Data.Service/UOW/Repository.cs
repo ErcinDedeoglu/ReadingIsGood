@@ -55,7 +55,7 @@ namespace ReadingIsGood.Data.Service.UOW
 
         public async ValueTask<T> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await _entities.FindAsync(id, cancellationToken);
+            return await _entities.FindAsync(new object[] {id}, cancellationToken);
         }
 
         public IEnumerable<T> GetAll()
