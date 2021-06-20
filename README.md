@@ -64,15 +64,15 @@ We expand the "/api/authorization/Users/authenticate" method from the opened ser
 **Password: test**
 We fill it as and press the "Execute" button.
 
-![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-2.png)
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI%20Auth-2.png)
 
 There is Bearer token in the returned json request. We take it to the **clipboard** (copy it).
 
-![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-3.png)
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI%20Auth-3.png)
 
 There is an "Authorize" button on each page in Swagger. We scroll up and find the button and click it.
 
-![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-4.png)
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI%20Auth-4.png)
 
 We paste the token we copied into the Bearer token field and press the "Authorize" button.
 
