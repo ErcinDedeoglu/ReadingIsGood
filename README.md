@@ -28,6 +28,8 @@
 
 ## Architectural Concept
 
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/Network%20Tapology.png)
+
 Incoming restful requests are directly met by the Gateway (Reverse Proxy) and directed to the running container. The application is designed as a 3 layer architecture. Repository Design Pattern was preferred for database communication in the project. The Unit Of Work design pattern is preferred for processing incoming web service requests and minimizing code repetition. Entity Framework Core and Code First are used on the ORM side. PostgreSQL is preferred for database. The project has been implemented as stateless in microservice architecture. In this way, it can be run on Docker.
 
 **ReadingIsGood.Gateway.API:** Reverse proxy. Responsible for receiving incoming requests and initial verification.
