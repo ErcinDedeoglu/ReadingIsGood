@@ -3,15 +3,15 @@
   <p align="center">
     Macro service based web api for book sales.
     <br />
-    <a href="https://https://ercin-readingisgood.herokuapp.com/swagger/index.html"><strong>Live Demo »</strong> (REVERSE PROXY)</a>
+    <a href="https://ercin-readingisgood.herokuapp.com/swagger/index.html"><strong>Live Demo »</strong> (REVERSE PROXY)</a>
     <br />
-    <a href="https://https://ercin-readingisgood-log.herokuapp.com/swagger/index.html"><strong>Log Demo »</strong> (Logging Service)</a>
+    <a href="https://ercin-readingisgood-log.herokuapp.com/swagger/index.html"><strong>Log Demo »</strong> (Logging Service)</a>
     <br />
-    <a href="https://https://ercin-readingisgood-customer.herokuapp.com/swagger/index.html"><strong>Customer Demo »</strong> (Customer Service)</a>
+    <a href="https://ercin-readingisgood-customer.herokuapp.com/swagger/index.html"><strong>Customer Demo »</strong> (Customer Service)</a>
     <br />
-    <a href="https://https://ercin-readingisgood-order.herokuapp.com/swagger/index.html"><strong>Order Demo »</strong> (Order Service)</a>
+    <a href="https://ercin-readingisgood-order.herokuapp.com/swagger/index.html"><strong>Order Demo »</strong> (Order Service)</a>
     <br />
-    <a href="https://https://ercin-readingisgood-auth.herokuapp.com/swagger/index.html"><strong>Authorization Demo »</strong> (Auth Service)</a>  
+    <a href="https://ercin-readingisgood-auth.herokuapp.com/swagger/index.html"><strong>Authorization Demo »</strong> (Auth Service)</a>  
   </p>
 
 ### Built With
