@@ -47,3 +47,35 @@ Incoming restful requests are directly met by the Gateway (Reverse Proxy) and di
 First of all, the application is deployed using Heroku and ElephantSQL. Access to the Swagger OpenAPI is enabled at https://ercin-readingisgood.herokuapp.com/swagger/index.html.
 
 NET Core 5 SDK is required to compile the application. If you want to migrate to a different database than I use, you can get a free PostgreSQL database from ElephantSQL or use your own instance.
+
+# Here we go
+
+When you reach https://ercin-readingisgood.herokuapp.com/swagger/index.html, you will see Reverse Proxy's OpenAPI page.
+
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Service Selection.png)
+
+We continue by choosing Authorization API - v1 service.
+
+We expand the "/api/authorization/Users/authenticate" method from the opened service swagger.
+
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-1.png)
+
+**Username: test**
+**Password: test**
+We fill it as and press the "Execute" button.
+
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-2.png)
+
+There is Bearer token in the returned json request. We take it to the **clipboard** (copy it).
+
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-3.png)
+
+There is an "Authorize" button on each page in Swagger. We scroll up and find the button and click it.
+
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-4.png)
+
+We paste the token we copied into the Bearer token field and press the "Authorize" button.
+
+Now we can consume all api's without any other settings.
+
+Happy coding.
