@@ -26,11 +26,9 @@ namespace ReadingIsGood.Data.Service.UOW
             return entity;
         }
 
-        public T InsertAsync(T entity)
+        public async Task InsertAsync(T entity, CancellationToken cancellationToken = default)
         {
-            _entities.AddAsync(entity);
-
-            return entity;
+            await _entities.AddAsync(entity, cancellationToken);
         }
 
         public void PurgeAll()
@@ -55,9 +53,9 @@ namespace ReadingIsGood.Data.Service.UOW
             return _entities.Find(id);
         }
 
-        public ValueTask<T> GetAsync(int id, CancellationToken cancellationToken = default)
+        public async ValueTask<T> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            return _entities.FindAsync(id, cancellationToken);
+            return await _entities.FindAsync(id, cancellationToken);
         }
 
         public IEnumerable<T> GetAll()
@@ -65,9 +63,9 @@ namespace ReadingIsGood.Data.Service.UOW
             return _entities.ToList();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return _entities.ToListAsync();
+            return await _entities.ToListAsync(cancellationToken: cancellationToken);
         }
 
 
@@ -81,9 +79,9 @@ namespace ReadingIsGood.Data.Service.UOW
             return _entities.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
         }
 
-        public Task<T> RandomAsync()
+        public async Task<T> RandomAsync(CancellationToken cancellationToken = default)
         {
-            return _entities.OrderBy(x => Guid.NewGuid()).FirstOrDefaultAsync();
+            return await _entities.OrderBy(x => Guid.NewGuid()).FirstOrDefaultAsync(cancellationToken: cancellationToken);
         }
     }
 }

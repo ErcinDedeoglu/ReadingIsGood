@@ -1,4 +1,4 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+#ReadingIsGood.Authorization.API
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
@@ -19,4 +19,6 @@ RUN dotnet publish "ReadingIsGood.Authorization.API.csproj" -c Release -o /app/p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ReadingIsGood.Authorization.API.dll"]
+#ENTRYPOINT ["dotnet", "ReadingIsGood.Authorization.API.dll"]
+# Use the following instead for Heroku
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet ReadingIsGood.Authorization.API.dll

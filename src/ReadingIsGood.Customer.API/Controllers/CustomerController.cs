@@ -3,25 +3,22 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using ReadingIsGood.Business.Attribute;
 using ReadingIsGood.Business.DTO.Common;
 using ReadingIsGood.Business.DTO.Request;
-using ReadingIsGood.Data.Interface;
 using ReadingIsGood.Data.Interface.UOW;
 
 namespace ReadingIsGood.Customer.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
-        private readonly ILogger<CustomerController> _logger;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerController(ILogger<CustomerController> logger, IUnitOfWork unitOfWork)
+        public CustomerController(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
             _unitOfWork = unitOfWork;
         }
         

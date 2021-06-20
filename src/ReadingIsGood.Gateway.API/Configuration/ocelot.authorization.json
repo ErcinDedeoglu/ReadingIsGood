@@ -2,7 +2,6 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/{everything}",
-      "DownstreamScheme": "http",
       "ServiceName": "authorization",
       "UpstreamPathTemplate": "/api/authorization/{everything}",
       "UpstreamHttpMethod": [],

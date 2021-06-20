@@ -2,8 +2,8 @@
 
 namespace ReadingIsGood.Business.DTO.Response
 {
-    public class NewOrderResponse
+    public class CustomerOrdersResponse : PagingResponse
     {
-        
+        public dynamic Items { get; set; }
     }
 }

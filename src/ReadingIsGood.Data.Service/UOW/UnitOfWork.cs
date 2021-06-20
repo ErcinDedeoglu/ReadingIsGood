@@ -1,5 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using ReadingIsGood.Business.DTO.Internal;
 using ReadingIsGood.Context;
 using ReadingIsGood.Data.Interface;
 using ReadingIsGood.Data.Interface.UOW;
@@ -9,10 +11,26 @@ namespace ReadingIsGood.Data.Service.UOW
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DataContext _dataContext;
+        private readonly IOptions<AppSettings> _appSettings;
 
-        public UnitOfWork(DataContext dbContext)
+        public UnitOfWork(DataContext dbContext, IOptions<AppSettings> appSettings)
         {
             _dataContext = dbContext;
+            _appSettings = appSettings;
+        }
+
+        private IUserService _userService;
+
+        public IUserService UserService
+        {
+            get { return _userService ??= new UserService(this); }
+        }
+
+        private IJwtService _jwtService;
+
+        public IJwtService JwtService
+        {
+            get { return _jwtService ??= new JwtService(_appSettings); }
         }
 
         private IAuditLogService _auditLogService;

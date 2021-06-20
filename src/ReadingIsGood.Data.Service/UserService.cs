@@ -4,21 +4,22 @@ using ReadingIsGood.Business.DTO.Request;
 using ReadingIsGood.Business.DTO.Response;
 using ReadingIsGood.Data.Entity;
 using ReadingIsGood.Data.Interface;
+using ReadingIsGood.Data.Interface.UOW;
 
 namespace ReadingIsGood.Data.Service
 {
     public class UserService : IUserService
     {
-        private readonly IJwtService _jwtService;
+        private readonly IUnitOfWork _unitOfWork;
 
         private readonly List<User> _users = new List<User>()
         {
             new User {Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test"}
         };
 
-        public UserService(IJwtService jwtService)
+        public UserService(IUnitOfWork unitOfWork)
         {
-            _jwtService = jwtService;
+            _unitOfWork = unitOfWork;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -27,7 +28,7 @@ namespace ReadingIsGood.Data.Service
 
             if (user == null) return null;
 
-            var token = _jwtService.GenerateJwtToken(user);
+            var token = _unitOfWork.JwtService.GenerateJwtToken(user);
 
             return new AuthenticateResponse(user, token);
         }

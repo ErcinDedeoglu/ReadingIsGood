@@ -58,6 +58,7 @@ namespace ReadingIsGood.Data.Service
             }
             catch
             {
+                // ignored
             }
         }
     }

@@ -6,6 +6,10 @@ namespace ReadingIsGood.Data.Interface.UOW
 {
     public interface IUnitOfWork : IDisposable
     {
+        IUserService UserService { get; }
+
+        IJwtService JwtService { get; }
+
         IAuditLogService AuditLogService { get; }
 
         ICustomerService CustomerService { get; }

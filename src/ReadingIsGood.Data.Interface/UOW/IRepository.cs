@@ -9,7 +9,7 @@ namespace ReadingIsGood.Data.Interface.UOW
     {
         T Insert(T entity);
 
-        T InsertAsync(T entity);
+        Task InsertAsync(T entity, CancellationToken cancellationToken = default);
 
         void Purge(T entity);
 
@@ -23,12 +23,12 @@ namespace ReadingIsGood.Data.Interface.UOW
 
         IEnumerable<T> GetAll();
 
-        Task<List<T>> GetAllAsync();
+        Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default);
 
         IQueryable<T> Query();
 
         T Random();
 
-        Task<T> RandomAsync();
+        Task<T> RandomAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ReadingIsGood.Business.DTO.Response
 {
-    public class NewCustomerResponse : Response
+    public class NewCustomerResponse
     {
         
     }
