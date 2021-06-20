@@ -52,13 +52,13 @@ NET Core 5 SDK is required to compile the application. If you want to migrate to
 
 When you reach https://ercin-readingisgood.herokuapp.com/swagger/index.html, you will see Reverse Proxy's OpenAPI page.
 
-![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Service Selection.png)
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI%20Service%20Selection.png)
 
 We continue by choosing Authorization API - v1 service.
 
 We expand the "/api/authorization/Users/authenticate" method from the opened service swagger.
 
-![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI Auth-1.png)
+![](https://github.com/ErcinDedeoglu/ReadingIsGood/raw/main/assets/OpenAPI%20Auth-1.png)
 
 **Username: test**
 **Password: test**
